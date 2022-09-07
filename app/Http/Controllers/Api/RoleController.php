@@ -28,8 +28,7 @@ class RoleController extends Controller
         $data = Role::query();
         $logged_user = User::findOrFail(Auth::guard('web')->user()->id);
         if ($logged_user->hasRole('SUPERADMIN')) {
-            // $data = $data
-            //     ->get();
+
             $data = $data
                 ->where('name', '!=', 'SUPERADMIN')
                 ->where('name', '!=', 'ADMIN')
@@ -67,8 +66,7 @@ class RoleController extends Controller
         $data = Role::query();
         $logged_user = User::findOrFail(Auth::guard('web')->user()->id);
         if ($logged_user->hasRole('SUPERADMIN')) {
-            // $data = $data
-            //     ->get();
+
             $data = $data
                 ->where('name', '!=', 'SUPERADMIN')
                 ->where('name', '!=', 'ADMIN')

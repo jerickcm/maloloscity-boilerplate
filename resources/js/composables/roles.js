@@ -8,7 +8,7 @@ export default function useRoles() {
     const roles_form = ref([]);
 
     const getRoles = async () => {
-        let response = await axios.get("/cstm/roles");
+        let response = await axios.get("/roles/index");
         roles.value = response.data.data;
         roles.value.map((item, index) => {
             roles_form.value.push(item.name);
@@ -16,7 +16,7 @@ export default function useRoles() {
     };
 
     const getRoles_edit = async () => {
-        let response = await axios.get("/api/cstm/roles");
+        let response = await axios.get("/roles/edit");
         roles.value = response.data.data;
         roles.value.map((item, index) => {
             roles_form.value.push(item.name);
@@ -24,7 +24,7 @@ export default function useRoles() {
     };
 
     const getRoles_user_edit = async () => {
-        let response = await axios.get("/api/cstm/roles/user_edit");
+        let response = await axios.get("/roles/user_edit");
         roles.value = response.data.data;
         roles.value.map((item, index) => {
             roles_form.value.push(item.name);
@@ -65,7 +65,7 @@ export default function useRoles() {
     const updateRoleslist_data = async (data) => {
         errors_roles.value = "";
         try {
-            await axios.post("/api/cstm/roles/update_all", data);
+            await axios.post("/roles/update_all", data);
         } catch (e) {
             if (e.response.status === 422) {
                 errors_roles.value = e.response.data.errors;

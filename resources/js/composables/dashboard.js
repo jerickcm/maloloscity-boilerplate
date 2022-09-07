@@ -7,21 +7,14 @@ export default function useDashboard() {
     const errors_dash = ref([]);
 
     const getdashboard_datas = async () => {
-        let response = await axios.get("/request/familysurvey/dashboard/get");
+        let response = await axios.get("/dashboard/get");
         dashboards.value = response.data.data;
     };
-
-    // const getdashboard_data = async (id) => {
-    //     let response = await axios.get("/api/dashboard/" + id);
-    // };
-
-    /* custom api */
 
     return {
         dashboards,
         dashboard,
         errors_dash,
-        // getdashboard_data,
         getdashboard_datas,
     };
 }

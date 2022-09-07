@@ -64,7 +64,7 @@ export default function useUsers() {
         errors_reset_password.value = "";
         try {
             await axios
-                .put("/api/cstm/users/resetpassword/" + id, user.value)
+                .put("/users/resetpassword/" + id, user.value)
                 .then(() => {});
         } catch (e) {
             if (e.response.status === 422) {
@@ -79,7 +79,6 @@ export default function useUsers() {
 
     const destroyUser_with_logs = async (id, user_id) => {
         errors_users_table.value = "";
-
         try {
             let response = await axios.delete(
                 "/users/delete/" + id + "/" + user_id

@@ -57,7 +57,7 @@ export default function useLogs() {
     const searchLogs = async (data) => {
         errors_logs.value = "";
         try {
-            let response = await axios.post("/api/cstm/logs/search", data);
+            let response = await axios.post("/logs/search", data);
             logs.value = response.data.data;
         } catch (e) {
             if (e.response.status === 422) {
@@ -69,7 +69,7 @@ export default function useLogs() {
     const loadFromServer = async (logs, serverItemsLength, options, params) => {
         errors_logs.value = "";
         try {
-            let response = await axios.post("/api/cstm/logs/fetch", {
+            let response = await axios.post("/logs/fetch", {
                 options: options.value,
                 params: params,
             });

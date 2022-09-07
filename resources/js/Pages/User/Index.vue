@@ -16,14 +16,11 @@ export default {
         BreezeNavLink,
     },
     setup() {
-
         const toast = useToast();
         const Auth_User = ref(usePage().props.value.auth.user);
         const permissions = usePage().props.value.auth.user.PermissionList;
         const {
             users,
-            getUsers,
-            getUsersById,
             exportUserData,
             destroyUser_with_logs,
             loadFromServer,
@@ -31,11 +28,6 @@ export default {
         } = useUsers();
         const isLoading = ref(false);
         const headers = ref([
-            // {
-            //     text: "Id",
-            //     value: "id",
-            //     sortable: false,
-            // },
             { text: "Name", value: "name", sortable: false },
             { text: "Email", value: "email", sortable: false },
             { text: "Role", value: "userrole", sortable: false },
@@ -88,6 +80,8 @@ export default {
                 timeout: 2000,
             });
             await (id, Auth_User.value.id);
+
+            await destroyUser_with_logs(id, Auth_User.value.id);
 
             // await getUsers();
             if (errors_users_table.value) {
