@@ -13,15 +13,6 @@ const showingNavigationDropdown = ref(false);
 <template>
     <div>
         <div class="min-h-screen bg-gray-100">
-            <!-- Page Heading -->
-            <!-- <header class="bg-blue-900 shadow second-nav" v-if="$slots.header">
-                <div class="w-full mx-auto py-6 px-4 sm:px-6 lg:px-8">
-                    <h2 class="font-semibold text-xl text-white leading-tight">
-                        <slot name="header" />
-                    </h2>
-                </div>
-            </header> -->
-
             <div id="holder">
                 <header>
                     <div class="p-5 bg-bottom second-nav">

@@ -23,15 +23,9 @@ class PermissionSeeder extends Seeder
         Permission::create(['name' => 'Access-Page-User']);
         Permission::create(['name' => 'Access-Page-Dashboard']);
         Permission::create(['name' => 'Access-Page-Logs']);
-        Permission::create(['name' => 'Access-Page-SurveyForm']);
 
         /** Page Actions */
         Permission::create(['name' => 'Action Edit Permission']);
-
-        /* Survey Permission */
-         Permission::create(['name' => 'Action Delete SurveyForm']);
-         Permission::create(['name' => 'Action Create SurveyForm']);
-         Permission::create(['name' => 'Action Edit SurveyForm']);
 
         /* User Permission */
         Permission::create(['name' => 'Action Delete User']);
@@ -42,9 +36,7 @@ class PermissionSeeder extends Seeder
         /* Logs Permission */
 
         Permission::create(['name' => 'Action Download User']);
-        Permission::create(['name' => 'Action Download SurveyForm']);
         Permission::create(['name' => 'Action Download Logs']);
-
         Permission::create(['name' => 'Action Settings Roles']);
 
     }

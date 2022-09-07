@@ -88,22 +88,6 @@ export default {
                                     Logs
                                 </BreezeNavLink>
                             </div>
-
-                            <div
-                                v-if="
-                                    permissions.includes(
-                                        'Access-Page-SurveyForm'
-                                    )
-                                "
-                                class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex"
-                            >
-                                <BreezeNavLink
-                                    :href="route('forms-index')"
-                                    :active="route().current('forms-index')"
-                                >
-                                    Survey Form
-                                </BreezeNavLink>
-                            </div>
                         </div>
 
                         <div class="hidden sm:flex sm:items-center sm:ml-6">
@@ -233,17 +217,6 @@ export default {
                         </BreezeResponsiveNavLink>
                     </div>
 
-                    <div
-                        v-if="permissions.includes('Access-Page-SurveyForm')"
-                        class="pt-2 pb-3 space-y-1"
-                    >
-                        <BreezeResponsiveNavLink
-                            :href="route('forms-index')"
-                            :active="route().current('forms-index')"
-                        >
-                            Survey Forms
-                        </BreezeResponsiveNavLink>
-                    </div>
                     <!-- Responsive Settings Options -->
                     <div class="pt-4 pb-1 border-t border-gray-200">
                         <div class="px-4">
