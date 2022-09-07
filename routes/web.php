@@ -24,42 +24,14 @@ use App\Models\User;
 Route::get('/', [AuthenticatedSessionController::class, 'create']);
 
 
-Route::group(['middleware' => ['permission:Access-Page-SurveyForm']], function () {
-    Route::get('/forms-create',  [App\Http\Controllers\FamilySurveyController::class, 'handleCreate'])->middleware(['auth', 'verified'])->name('forms-create');
-});
-
-Route::group(['middleware' => ['permission:Access-Page-SurveyForm']], function () {
-    Route::get('/forms-edit/{id}',  [App\Http\Controllers\FamilySurveyController::class, 'handleEdit'])->middleware(['auth', 'verified'])->name('forms-edit');
-});
-
-Route::group(['middleware' => ['permission:Access-Page-SurveyForm']], function () {
-    Route::get('/forms-index',  [App\Http\Controllers\FamilySurveyController::class, 'index'])->middleware(['auth', 'verified'])->name('forms-index');
-});
 
 Route::group(['prefix' => 'request/familysurvey', 'middleware' => ['throttle:500,1']], function () {
-
     Route::get('/dashboard/get', [\App\Http\Controllers\Api\DashboardController::class, 'index']);
-    Route::get('/{id}', [\App\Http\Controllers\Api\FamilySurveyController::class, 'show']);
-
-    Route::post('/', [\App\Http\Controllers\Api\FamilySurveyController::class, 'store']);
-
-    Route::post('/getSelectfield', [\App\Http\Controllers\Api\FamilySurveyController::class, 'getSearchfield']);
-    Route::post('/update/{id}', [\App\Http\Controllers\Api\FamilySurveyController::class, 'update']);
-    Route::post('/delete/{id}', [\App\Http\Controllers\Api\FamilySurveyController::class, 'destroy']);
 });
 
-Route::group(['prefix' => 'table/familysurvey', 'middleware' => ['throttle:500,1']], function () {
-    Route::post('/fetch', [\App\Http\Controllers\FamilySurveyController::class, 'fetch']);
-});
-
-Route::group(['prefix' => 'report/', 'middleware' => ['permission:Action Download SurveyForm', 'throttle:500,1']], function () {
-    Route::get('/pdf/{barangay}', [PDFController::class, 'survey_report']);
-});
 
 /* permission */
 Route::post('/users/updatePermissions', [\App\Http\Controllers\Api\UserController::class, 'updatePermissions']);
-
-// old
 
 Route::group(['middleware' => ['permission:Access-Page-Dashboard']], function () {
     Route::get('/dashboard', function () {
@@ -122,6 +94,25 @@ Route::group(['prefix' => 'cstm', 'middleware' => 'throttle:500,1'], function ()
     Route::post('/itineraries', [\App\Http\Controllers\Api\ItineraryController::class, 'store']);
     Route::post('/itineraries/add_business', [\App\Http\Controllers\Api\ItineraryController::class, 'add_business']);
     Route::post('/itineraries/fetch/{id}', [\App\Http\Controllers\Api\ItineraryController::class, 'fetch']);
+
+    /* users */
+    Route::get('/users/{id}', [\App\Http\Controllers\Api\UserController::class, 'index_user']);
+    Route::put('/users/changepassword/{id}', [\App\Http\Controllers\Api\UserController::class, 'change_password']);
+    Route::put('/users/resetpassword/{id}', [\App\Http\Controllers\Api\UserController::class, 'reset_password']);
+    Route::delete('/users/{id}/{user_id}', [\App\Http\Controllers\Api\UserController::class, 'delete_user']);
+    Route::post('/users/fetch', [\App\Http\Controllers\Api\UserController::class, 'fetch']);
+
+    /* dashboard */
+    Route::get('/dashboard', [\App\Http\Controllers\Api\DashboardController::class, 'index']);
+    Route::post('/user/export', [\App\Http\Controllers\Api\UserController::class, 'exportdata']);
+
+    /* logs */
+    Route::post('/logs/search', [\App\Http\Controllers\Api\LogsController::class, 'search']);
+    Route::post('/logs/fetch', [\App\Http\Controllers\Api\LogsController::class, 'fetch']);
+
+    Route::get('/roles', [\App\Http\Controllers\Api\RoleController::class, 'index_edit']);
+    Route::get('/roles/user_edit', [\App\Http\Controllers\Api\RoleController::class, 'index_user_edit']);
+    Route::post('/roles/update_all', [\App\Http\Controllers\Api\RoleController::class, 'update_all']);
 });
 
 require __DIR__ . '/auth.php';
