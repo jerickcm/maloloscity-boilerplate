@@ -6,12 +6,15 @@ export default {
         BreezeApplicationLogo,
         Link,
     },
+    data: () => ({
+        appname: "App Name ",
+    }),
 };
 </script>
 
 <template>
     <div
-        class="min-h-screen flex flex-col sm:justify-center items-center pt-6 sm:pt-0 bg-red-500 bg-page"
+        class="min-h-screen flex flex-col sm:justify-center items-center pt-6 sm:pt-0 bg-red-400 bg-page"
     >
         <div class="flex flex-items items-center">
             <div class="">
@@ -20,8 +23,7 @@ export default {
             <div class="ml-2">
                 <Link href="/login">
                     <h1 class="text-3xl text-white font-bold">
-                        Family Survey on <br />
-                        Risks and Vulnerabilities
+                        {{ appname }}
                     </h1>
                 </Link>
             </div>
@@ -39,7 +41,7 @@ export default {
 
 <style scoped>
 .bg-page {
-    background-image: url("../assets/images/familysurvey.png");
+    /* background-image: url("../assets/images/familysurvey.png"); */
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;

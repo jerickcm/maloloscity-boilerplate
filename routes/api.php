@@ -27,4 +27,17 @@ Route::apiResource('logs', \App\Http\Controllers\Api\LogsController::class);
 
 /*  api custom */
 
+// Route::group(['prefix' => 'cstm', 'middleware' => 'throttle:500,1'], function () {
 
+//     /* dashboard */
+//     Route::get('/dashboard', [\App\Http\Controllers\Api\DashboardController::class, 'index']);
+
+//     /* logs */
+//     Route::post('/logs/search', [\App\Http\Controllers\Api\LogsController::class, 'search']);
+//     Route::post('/logs/fetch', [\App\Http\Controllers\Api\LogsController::class, 'fetch']);
+
+//     Route::get('/roles', [\App\Http\Controllers\Api\RoleController::class, 'index_edit']);
+//     Route::get('/roles/user_edit', [\App\Http\Controllers\Api\RoleController::class, 'index_user_edit']);
+//     Route::post('/roles/update_all', [\App\Http\Controllers\Api\RoleController::class, 'update_all']);
+
+// });

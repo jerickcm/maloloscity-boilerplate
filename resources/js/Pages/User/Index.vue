@@ -87,7 +87,7 @@ export default {
             toast.info("Send", {
                 timeout: 2000,
             });
-            await destroyUser_with_logs(id, Auth_User.value.id);
+            await (id, Auth_User.value.id);
 
             // await getUsers();
             if (errors_users_table.value) {

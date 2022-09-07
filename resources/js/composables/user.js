@@ -16,8 +16,7 @@ export default function useUsers() {
     };
 
     const getUsersById = async (id) => {
-        let response = await axios.get("/api/cstm/users/" + id);
-
+        let response = await axios.get("/users/" + id);
         users.value = response.data.data;
     };
 
@@ -52,7 +51,7 @@ export default function useUsers() {
         errors_change_password.value = "";
         try {
             await axios
-                .put("/api/cstm/users/changepassword/" + id, user.value)
+                .put("/users/changepassword/" + id, user.value)
                 .then(() => {});
         } catch (e) {
             if (e.response.status === 422) {
@@ -83,7 +82,7 @@ export default function useUsers() {
 
         try {
             let response = await axios.delete(
-                "/api/cstm/users/" + id + "/" + user_id
+                "/users/delete/" + id + "/" + user_id
             );
         } catch (e) {
             if (e.response.status === 422) {
@@ -92,21 +91,9 @@ export default function useUsers() {
         }
     };
 
-    const searchUser = async (data) => {
-        errors_U.value = "";
-        try {
-            let response = await axios.post("/api/users/search", data);
-            users.value = response.data.data;
-        } catch (e) {
-            if (e.response.status === 422) {
-                errors_U.value = e.response.data.errors;
-            }
-        }
-    };
-
     const exportUserData = async () => {
         await axios
-            .post("/api/cstm/user/export", {}, { responseType: "blob" })
+            .post("/users/export", {}, { responseType: "blob" })
             .then((response) => {
                 var fileURL = window.URL.createObjectURL(
                     new Blob([response.data])
@@ -126,11 +113,7 @@ export default function useUsers() {
     const updateUserPermissions = async (data) => {
         errors_permissions.value = "";
         try {
-            let response = await axios.post(
-                "/users/updatePermissions",
-                data
-            );
-            // users.value = response.data.data;
+            let response = await axios.post("/users/updatePermissions", data);
         } catch (e) {
             if (e.response.status === 422) {
                 errors_permissions.value = e.response.data.errors;
@@ -146,7 +129,7 @@ export default function useUsers() {
     ) => {
         errors_users_table.value = "";
         try {
-            let response = await axios.post("/api/cstm/users/fetch", {
+            let response = await axios.post("/users/fetch", {
                 options: options.value,
                 params: params,
             });
@@ -169,7 +152,6 @@ export default function useUsers() {
         storeUser,
         updateUser,
         destroyUser,
-        searchUser,
         updateUserPassword,
         handleResetPassword,
         errors_change_password,
@@ -179,6 +161,6 @@ export default function useUsers() {
         destroyUser_with_logs,
         updateUserPermissions,
         loadFromServer,
-        errors_users_table
+        errors_users_table,
     };
 }
