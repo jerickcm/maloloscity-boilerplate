@@ -10,6 +10,13 @@ export default {
         Head,
         VueHighcharts,
     },
+    data: () => ({
+        title1: "Total",
+        title2: "Title2",
+        title3: "Title3",
+        title4: "Title4",
+        title5: "Title5",
+    }),
     setup(props) {
         const { errors_dash, dashboards, getdashboard_datas } = useDashboard();
         const data = ref([1, 2, 3]);
@@ -38,7 +45,7 @@ export default {
                     },
                 },
                 title: {
-                    text: "4P's Vs Non 4P's",
+                    text: "Data1  Vs Data2",
                 },
                 plotOptions: {
                     pie: {
@@ -75,7 +82,7 @@ export default {
                     type: "bar",
                 },
                 title: {
-                    text: "Total Respondents",
+                    text: "Total Subject Name",
                 },
                 plotOptions: {
                     pie: {
@@ -85,7 +92,7 @@ export default {
                 },
                 series: [
                     {
-                        name: "Total #",
+                        name: "Total Subject Name",
                         colorByPoint: true,
                         data: dashboards.value.total_respondents_chart,
                     },
@@ -113,7 +120,7 @@ export default {
                 },
 
                 title: {
-                    text: "Top 10 Most number of Respondents",
+                    text: "Top 10 Subject Name",
                 },
                 plotOptions: {
                     pie: {
@@ -150,7 +157,7 @@ export default {
                 },
 
                 title: {
-                    text: "Number of Respondents per barangay",
+                    text: "Number of Subject Name",
                 },
                 plotOptions: {
                     pie: {
@@ -160,7 +167,7 @@ export default {
                 },
                 series: [
                     {
-                        name: "Barangay",
+                        name: "Subject",
                         colorByPoint: true,
                         data: dashboards.value.respondents_per_barangay,
                     },
@@ -200,7 +207,7 @@ export default {
                 },
                 series: [
                     {
-                        name: "Applications",
+                        name: "Subject Name",
                         data: typeData.value,
                     },
                 ],
@@ -219,17 +226,11 @@ export default {
             };
         });
 
-        const onRender = () => {
+        const onRender = () => {};
 
-        };
+        const onUpdate = () => {};
 
-        const onUpdate = () => {
-
-        };
-
-        const onDestroy = () => {
-
-        };
+        const onDestroy = () => {};
         return {
             dashboards,
             chartData,
@@ -265,7 +266,7 @@ export default {
                             class="mx-1 mt-1 py-5 px-5 bg-red-500 h-20 sm:rounded-lg text-white text-center"
                         >
                             <span class="py-2 text-xl">
-                                Total:
+                                {{ title1 }}:
                                 {{ dashboards.total_respondents }}
                             </span>
                         </div>
@@ -273,21 +274,15 @@ export default {
                             class="mx-1 mt-1 py-5 px-5 bg-green-700 h-20 sm:rounded-lg text-white text-center"
                         >
                             <span class="py-2 text-xl">
-                                4 P's:
-                                {{
-                                    dashboards.fourPs
-                                }}</span
+                                {{ title2 }}: {{ dashboards.fourPs }}</span
                             >
                         </div>
 
                         <div
                             class="mx-1 mt-1 py-5 px-5 bg-blue-700 h-20 sm:rounded-lg text-white text-center"
                         >
-                            <span class="py-5 px-5 text-xl"
-                                >    Non - 4 P's:
-                                {{
-                                    dashboards.nonfourPs
-                                }}</span
+                            <span class="py-5 px-5 text-xl">
+                                {{ title3 }}: {{ dashboards.nonfourPs }}</span
                             >
                         </div>
                     </div>

@@ -27821,6 +27821,15 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     Head: _inertiajs_inertia_vue3__WEBPACK_IMPORTED_MODULE_1__.Head,
     VueHighcharts: (vue3_highcharts__WEBPACK_IMPORTED_MODULE_2___default())
   },
+  data: function data() {
+    return {
+      title1: "Total",
+      title2: "Title2",
+      title3: "Title3",
+      title4: "Title4",
+      title5: "Title5"
+    };
+  },
   setup: function setup(props) {
     var _useDashboard = (0,_composables_dashboard__WEBPACK_IMPORTED_MODULE_4__["default"])(),
         errors_dash = _useDashboard.errors_dash,
@@ -27865,7 +27874,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
           }
         },
         title: {
-          text: "4P's Vs Non 4P's"
+          text: "Data1  Vs Data2"
         },
         plotOptions: {
           pie: {
@@ -27890,7 +27899,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
           type: "bar"
         },
         title: {
-          text: "Total Respondents"
+          text: "Total Subject Name"
         },
         plotOptions: {
           pie: {
@@ -27899,7 +27908,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
           }
         },
         series: [{
-          name: "Total #",
+          name: "Total Subject Name",
           colorByPoint: true,
           data: dashboards.value.total_respondents_chart
         }],
@@ -27912,7 +27921,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
           type: "column"
         },
         title: {
-          text: "Top 10 Most number of Respondents"
+          text: "Top 10 Subject Name"
         },
         plotOptions: {
           pie: {
@@ -27934,7 +27943,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
           type: "column"
         },
         title: {
-          text: "Number of Respondents per barangay"
+          text: "Number of Subject Name"
         },
         plotOptions: {
           pie: {
@@ -27943,7 +27952,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
           }
         },
         series: [{
-          name: "Barangay",
+          name: "Subject",
           colorByPoint: true,
           data: dashboards.value.respondents_per_barangay
         }],
@@ -27969,7 +27978,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
           }
         },
         series: [{
-          name: "Applications",
+          name: "Subject Name",
           data: typeData.value
         }],
         colors: ["#9346dd", "#fe5288", "#0183d6", "#f4a62f", "#1aadce", "#492970", "#f28f43", "#77a1e5", "#c42525", "#a6c96a"]
@@ -30964,11 +30973,11 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       return [_hoisted_1];
     }),
     "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-      return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_3, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_4, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_5, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_6, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", _hoisted_7, " Total: " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($setup.dashboards.total_respondents), 1
+      return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_3, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_4, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_5, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_6, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", _hoisted_7, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(_ctx.title1) + ": " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($setup.dashboards.total_respondents), 1
       /* TEXT */
-      )]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_8, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", _hoisted_9, " 4 P's: " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($setup.dashboards.fourPs), 1
+      )]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_8, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", _hoisted_9, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(_ctx.title2) + ": " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($setup.dashboards.fourPs), 1
       /* TEXT */
-      )]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_10, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", _hoisted_11, " Non - 4 P's: " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($setup.dashboards.nonfourPs), 1
+      )]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_10, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", _hoisted_11, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(_ctx.title3) + ": " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($setup.dashboards.nonfourPs), 1
       /* TEXT */
       )])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_12, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_vue_highcharts, {
         type: "chart",
