@@ -1,0 +1,18 @@
+september 2
+
+program introduction
+completion of half of migration field data
+
+september 3 sat
+completion of migration table
+create controller and model
+
+september 4 sunday
+create layout of survery form
+
+september 5 monday
+Create table view
+Edit Page
+Add 20 Encoders
+
+Add Report data export and dashboard.
