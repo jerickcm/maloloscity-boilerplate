@@ -28808,19 +28808,19 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     var headers = (0,vue__WEBPACK_IMPORTED_MODULE_4__.ref)([{
       text: "Name",
       value: "name",
-      sortable: false
+      sortable: true
     }, {
       text: "Email",
       value: "email",
-      sortable: false
+      sortable: true
     }, {
       text: "Role",
       value: "userrole",
-      sortable: false
+      sortable: true
     }, {
       text: "Date/Time",
       value: "createddate",
-      sortable: false
+      sortable: true
     }, {
       text: "Action",
       value: "action",
@@ -28828,12 +28828,13 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     }]);
     /* Datatable */
 
-    var loading = (0,vue__WEBPACK_IMPORTED_MODULE_4__.ref)(true); // const selectedItems = ref([]);
-
+    var loading = (0,vue__WEBPACK_IMPORTED_MODULE_4__.ref)(true);
     var serverItemsLength = (0,vue__WEBPACK_IMPORTED_MODULE_4__.ref)(0);
     var serverOptions = (0,vue__WEBPACK_IMPORTED_MODULE_4__.ref)({
       page: 1,
-      rowsPerPage: 10
+      rowsPerPage: 10,
+      sortBy: "id",
+      sortType: "desc"
     });
     var searchParameter = (0,vue__WEBPACK_IMPORTED_MODULE_4__.reactive)({
       searchField: "name",

@@ -28,20 +28,21 @@ export default {
         } = useUsers();
         const isLoading = ref(false);
         const headers = ref([
-            { text: "Name", value: "name", sortable: false },
-            { text: "Email", value: "email", sortable: false },
-            { text: "Role", value: "userrole", sortable: false },
-            { text: "Date/Time", value: "createddate", sortable: false },
+            { text: "Name", value: "name", sortable: true },
+            { text: "Email", value: "email", sortable: true },
+            { text: "Role", value: "userrole", sortable: true },
+            { text: "Date/Time", value: "createddate", sortable: true },
             { text: "Action", value: "action", sortable: false },
         ]);
 
         /* Datatable */
         const loading = ref(true);
-        // const selectedItems = ref([]);
         const serverItemsLength = ref(0);
         const serverOptions = ref({
             page: 1,
             rowsPerPage: 10,
+            sortBy: "id",
+            sortType: "desc",
         });
         const searchParameter = reactive({
             searchField: "name",
