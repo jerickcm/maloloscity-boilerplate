@@ -522,7 +522,12 @@ class UserController extends Controller
                 ->orWhere([['users.email', 'LIKE', "%" . $word . "%"]]);
         })->take($options['rowsPerPage']);
 
-        $query =  $reqs->orderBy('id', 'DESC')->offset(($options['page'] - 1) * $limit);
+        if (isset($options['sortBy'])) {
+            $query  = $reqs->orderBy($options['sortBy'],  strtoupper($options['sortType']));
+        }
+
+        $query = $reqs->offset(($options['page'] - 1) * $limit);
+        
         $reqs =  $query->get();
         $count = User::count();
 

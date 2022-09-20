@@ -14,18 +14,19 @@ export default {
         Link,
     },
     setup(props) {
-
         const Auth_user = computed(() => usePage().props.value.auth.user);
 
         const toast = useToast();
         const form = reactive({});
         /* Datatable */
         const loading = ref(true);
-        // const selectedItems = ref([]);
+
         const serverItemsLength = ref(0);
         const serverOptions = ref({
             page: 1,
             rowsPerPage: 10,
+            sortBy: "id",
+            sortType: "desc",
         });
         const searchParameter = reactive({
             searchField: "name",
@@ -33,15 +34,16 @@ export default {
             filterField: "",
             filterValue: "",
         });
-        /* Datatable */
+
         const { logs, loadFromServer } = useLogs();
+
         const headers = ref([
-            { text: "Id", value: "id" },
-            { text: "User Email", value: "useremail" },
-            { text: "User Name", value: "username" },
+            { text: "Id", value: "id", sortable: true },
+            { text: "User Email", value: "useremail", sortable: true },
+            { text: "User Name", value: "username", sortable: true },
             { text: "Type", value: "type_desc", sortable: true },
-            { text: "Description", value: "description" },
-            { text: "Date/Time ", value: "createddate", sortable: true },
+            { text: "Description", value: "description", sortable: false },
+            { text: "Date/Time ", value: "createddate", sortable: false },
         ]);
 
         const server_sided = _.debounce(async () => {
@@ -93,7 +95,6 @@ export default {
         <Head title="Logs" />
         <template #header> Logs page </template>
         <div class="">
-            <!-- <div class="max-w-7xl mx-auto sm:px-6 lg:px-8"> -->
             <div class="pb-10 py-2 w-full mx-auto sm:px-6 lg:px-8">
                 <div>
                     <nav class="py-5 flex" aria-label="Breadcrumb">
@@ -183,6 +184,7 @@ export default {
                     <div>
                         <EasyDataTable
                             show-index
+                            must-sort
                             v-model:server-options="serverOptions"
                             :server-items-length="serverItemsLength"
                             :headers="headers"

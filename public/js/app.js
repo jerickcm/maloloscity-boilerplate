@@ -28055,12 +28055,13 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     var form = (0,vue__WEBPACK_IMPORTED_MODULE_2__.reactive)({});
     /* Datatable */
 
-    var loading = (0,vue__WEBPACK_IMPORTED_MODULE_2__.ref)(true); // const selectedItems = ref([]);
-
+    var loading = (0,vue__WEBPACK_IMPORTED_MODULE_2__.ref)(true);
     var serverItemsLength = (0,vue__WEBPACK_IMPORTED_MODULE_2__.ref)(0);
     var serverOptions = (0,vue__WEBPACK_IMPORTED_MODULE_2__.ref)({
       page: 1,
-      rowsPerPage: 10
+      rowsPerPage: 10,
+      sortBy: "id",
+      sortType: "desc"
     });
     var searchParameter = (0,vue__WEBPACK_IMPORTED_MODULE_2__.reactive)({
       searchField: "name",
@@ -28068,7 +28069,6 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       filterField: "",
       filterValue: ""
     });
-    /* Datatable */
 
     var _useLogs = (0,_composables_logs__WEBPACK_IMPORTED_MODULE_3__["default"])(),
         logs = _useLogs.logs,
@@ -28076,24 +28076,28 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
     var headers = (0,vue__WEBPACK_IMPORTED_MODULE_2__.ref)([{
       text: "Id",
-      value: "id"
+      value: "id",
+      sortable: true
     }, {
       text: "User Email",
-      value: "useremail"
+      value: "useremail",
+      sortable: true
     }, {
       text: "User Name",
-      value: "username"
+      value: "username",
+      sortable: true
     }, {
       text: "Type",
       value: "type_desc",
       sortable: true
     }, {
       text: "Description",
-      value: "description"
+      value: "description",
+      sortable: false
     }, {
       text: "Date/Time ",
       value: "createddate",
-      sortable: true
+      sortable: false
     }]);
 
     var server_sided = _.debounce( /*#__PURE__*/_asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee() {
@@ -28806,6 +28810,10 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
     var isLoading = (0,vue__WEBPACK_IMPORTED_MODULE_4__.ref)(false);
     var headers = (0,vue__WEBPACK_IMPORTED_MODULE_4__.ref)([{
+      text: "id",
+      value: "id",
+      sortable: true
+    }, {
       text: "Name",
       value: "name",
       sortable: true
@@ -28816,11 +28824,11 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     }, {
       text: "Role",
       value: "userrole",
-      sortable: true
+      sortable: false
     }, {
       text: "Date/Time",
       value: "createddate",
-      sortable: true
+      sortable: false
     }, {
       text: "Action",
       value: "action",
@@ -31323,7 +31331,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
       return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Head, {
         title: "Logs"
-      }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" <div class=\"max-w-7xl mx-auto sm:px-6 lg:px-8\"> "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_3, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("nav", _hoisted_4, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("ol", _hoisted_5, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("li", _hoisted_6, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Link, {
+      }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_3, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("nav", _hoisted_4, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("ol", _hoisted_5, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("li", _hoisted_6, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Link, {
         href: _ctx.route('dashboard'),
         "class": "inline-flex items-center text-sm font-medium text-gray-700 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white"
       }, {
@@ -31357,6 +31365,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       /* NEED_PATCH */
       ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $setup.searchParameter.searchValue]])])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_EasyDataTable, {
         "show-index": "",
+        "must-sort": "",
         "server-options": $setup.serverOptions,
         "onUpdate:server-options": _cache[1] || (_cache[1] = function ($event) {
           return $setup.serverOptions = $event;
@@ -33498,6 +33507,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       /* PROPS */
       , ["href"])])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_EasyDataTable, {
         "show-index": "",
+        "must-sort": "",
         "server-options": $setup.serverOptions,
         "onUpdate:server-options": _cache[2] || (_cache[2] = function ($event) {
           return $setup.serverOptions = $event;

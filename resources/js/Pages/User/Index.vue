@@ -28,10 +28,11 @@ export default {
         } = useUsers();
         const isLoading = ref(false);
         const headers = ref([
+            { text: "id", value: "id", sortable: true },
             { text: "Name", value: "name", sortable: true },
             { text: "Email", value: "email", sortable: true },
-            { text: "Role", value: "userrole", sortable: true },
-            { text: "Date/Time", value: "createddate", sortable: true },
+            { text: "Role", value: "userrole", sortable: false },
+            { text: "Date/Time", value: "createddate", sortable: false },
             { text: "Action", value: "action", sortable: false },
         ]);
 
@@ -83,8 +84,6 @@ export default {
             await (id, Auth_User.value.id);
 
             await destroyUser_with_logs(id, Auth_User.value.id);
-
-            // await getUsers();
             if (errors_users_table.value) {
                 toast.error("Delete error.");
             } else {
@@ -262,6 +261,7 @@ export default {
                 <div>
                     <EasyDataTable
                         show-index
+                        must-sort
                         v-model:server-options="serverOptions"
                         :server-items-length="serverItemsLength"
                         :headers="headers"

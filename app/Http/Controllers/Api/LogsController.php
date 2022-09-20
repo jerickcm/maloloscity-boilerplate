@@ -16,11 +16,10 @@ class LogsController extends Controller
      * @return \Illuminate\Http\Response
      */
 
-    // limit(15000)->
+
     public function index()
     {
         return LogsResource::collection(Logs::orderby('id', 'DESC')->get());
-        // return LogsResource::collection(Logs::all());
     }
 
     public function fetch(Request $request)
@@ -38,7 +37,11 @@ class LogsController extends Controller
                 ->orWhere([['users.email', 'LIKE', "%" . $word . "%"]]);
         })->take($options['rowsPerPage']);
 
-        $query =  $reqs->orderBy('id', 'DESC')->offset(($options['page'] - 1) * $limit);
+        if (isset($options['sortBy'])) {
+            $query  = $reqs->orderBy($options['sortBy'],  strtoupper($options['sortType']));
+        }
+
+        $query = $query->offset(($options['page'] - 1) * $limit);
         $reqs =  $query->get();
         $count = Logs::count();
 
@@ -46,7 +49,6 @@ class LogsController extends Controller
             'data' => $reqs,
             'totalRecords' => $count,
         ]);
-
     }
     /**
      * Store a newly created resource in storage.
